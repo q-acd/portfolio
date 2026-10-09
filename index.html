@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Лев Гнилозуб — Quantum ACD</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
+
+<!-- ============================================================
+     ==== ДАННЫЕ ====
+     ============================================================ -->
+<script>
+const ME = {
+  name: "Лев Гнилозуб",
+  role: "Разработчик · Основатель Quantum ACD · LVGB",
+  updated: "октябрь 2026",
+  links: [
+    { icon: "code",           label: "GitHub",      url: "https://github.com/q-acd" },
+    { icon: "music_note",     label: "LVGB",        url: "https://lightaudio.ru/mp3/lvgb?ysclid=mv0qduw7s614494778" },
+    { icon: "public",         label: "VK", url: "https://vk.ru/lmblog15" },
+    { icon: "folder_special", label: "Портфолио",   url: "https://q-acd.github.io/portfolio/" }
+  ]
+};
+
+const AWARDS = [
+  { id: 1, title: "Награды скоро появятся", desc: "Сайт пока в разработке, скоро здесь появится архив наград.",
+    tags: ["Награды"], icon: "calculate", date: "скоро", link: null },
+  { id: 2, title: "Пример грамоты", desc: "Здесь описание. Награды могут содержать ссылки, например на ссылку цифрового документа. А иногда и на сайт разработчика или другое. Ниже для удобства поиска есть теги.",
+    tags: ["Награды", "Пример", "Песня"], icon: "music_note", date: "скоро", link: "https://lightaudio.ru/mp3/lvgb?ysclid=mv0qduw7s614494778" },
+      { id: 3, title: "О чём сайт?", desc: "Сей сайт - некое портфолио с открытым исходным кодом. Его можно попросить у разработчика. (ссылка ниже)",
+    tags: ["Награды"], icon: "help", date: "скоро", link: "mailto:q-acd@mail.ru" },
+];
+
+const COLOR_SCHEMES = {
+  grape: {
+    label: "Виноград",
+    light: { primary:"#6750A4", onPrimary:"#FFFFFF", primaryContainer:"#EADDFF", onPrimaryContainer:"#21005D",
+      secondaryContainer:"#E8DEF8", onSecondaryContainer:"#1D192B", surface:"#FEF7FF", surfaceContainer:"#F3EDF7",
+      surfaceContainerHigh:"#ECE6F0", surfaceVariant:"#E7E0EC", onSurface:"#1D1B20", onSurfaceVariant:"#49454F",
+      outline:"#79747E", outlineVariant:"#CAC4D0", error:"#B3261E", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#D0BCFF", onPrimary:"#381E72", primaryContainer:"#4F378B", onPrimaryContainer:"#EADDFF",
+      secondaryContainer:"#4A4458", onSecondaryContainer:"#E8DEF8", surface:"#141218", surfaceContainer:"#211F26",
+      surfaceContainerHigh:"#2B2930", surfaceVariant:"#49454F", onSurface:"#E6E0E9", onSurfaceVariant:"#CAC4D0",
+      outline:"#938F99", outlineVariant:"#49454F", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#6750A4","#B69DF8"]
+  },
+  lime: {
+    label: "Лайм",
+    light: { primary:"#4C662B", onPrimary:"#FFFFFF", primaryContainer:"#CDEDA3", onPrimaryContainer:"#102000",
+      secondaryContainer:"#DDE8C6", onSecondaryContainer:"#171E0A", surface:"#F9FAEF", surfaceContainer:"#EDEFE0",
+      surfaceContainerHigh:"#E7E9DA", surfaceVariant:"#E0E4CE", onSurface:"#1A1C16", onSurfaceVariant:"#44483A",
+      outline:"#74796A", outlineVariant:"#C4C8B7", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#B1D18A", onPrimary:"#1F3701", primaryContainer:"#354E16", onPrimaryContainer:"#CDEDA3",
+      secondaryContainer:"#414A32", onSecondaryContainer:"#DDE8C6", surface:"#12140D", surfaceContainer:"#1E2018",
+      surfaceContainerHigh:"#292B22", surfaceVariant:"#44483A", onSurface:"#E3E4D8", onSurfaceVariant:"#C4C8B7",
+      outline:"#8E9281", outlineVariant:"#44483A", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#7CB342","#CDEDA3"]
+  },
+  lemon: {
+    label: "Лимон",
+    light: { primary:"#6B5E00", onPrimary:"#FFFFFF", primaryContainer:"#F8E287", onPrimaryContainer:"#211B00",
+      secondaryContainer:"#E9E2B8", onSecondaryContainer:"#201C00", surface:"#FFFBFF", surfaceContainer:"#F2EEE0",
+      surfaceContainerHigh:"#ECE8DA", surfaceVariant:"#E6E2CE", onSurface:"#1C1C17", onSurfaceVariant:"#48473A",
+      outline:"#78776A", outlineVariant:"#C9C7B7", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#DBC66E", onPrimary:"#393000", primaryContainer:"#514700", onPrimaryContainer:"#F8E287",
+      secondaryContainer:"#4B4730", onSecondaryContainer:"#E9E2B8", surface:"#14130D", surfaceContainer:"#201F18",
+      surfaceContainerHigh:"#2B2A22", surfaceVariant:"#48473A", onSurface:"#E6E3D7", onSurfaceVariant:"#C9C7B7",
+      outline:"#929181", outlineVariant:"#48473A", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#F9D64A","#F8E287"]
+  },
+  orange: {
+    label: "Апельсин",
+    light: { primary:"#8B5000", onPrimary:"#FFFFFF", primaryContainer:"#FFDCBE", onPrimaryContainer:"#2D1600",
+      secondaryContainer:"#FFDCC7", onSecondaryContainer:"#2E1500", surface:"#FFFBFF", surfaceContainer:"#F4EEE9",
+      surfaceContainerHigh:"#EEE8E3", surfaceVariant:"#E8E1DB", onSurface:"#1F1B17", onSurfaceVariant:"#4E453D",
+      outline:"#81756C", outlineVariant:"#D3C3B9", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#FFB870", onPrimary:"#4A2800", primaryContainer:"#6B3B00", onPrimaryContainer:"#FFDCBE",
+      secondaryContainer:"#5C3F2A", onSecondaryContainer:"#FFDCC7", surface:"#17120E", surfaceContainer:"#251E19",
+      surfaceContainerHigh:"#302823", surfaceVariant:"#4E453D", onSurface:"#EBE0DA", onSurfaceVariant:"#D3C3B9",
+      outline:"#9C8E83", outlineVariant:"#4E453D", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#FF9800","#FFDCBE"]
+  },
+  tomato: {
+    label: "Томат",
+    light: { primary:"#B3261E", onPrimary:"#FFFFFF", primaryContainer:"#FFDAD6", onPrimaryContainer:"#410E0B",
+      secondaryContainer:"#FFDAD6", onSecondaryContainer:"#410E0B", surface:"#FFFBFF", surfaceContainer:"#F4DEDC",
+      surfaceContainerHigh:"#EFD9D7", surfaceVariant:"#F5DDDA", onSurface:"#201A19", onSurfaceVariant:"#534341",
+      outline:"#857370", outlineVariant:"#D8C2BF", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#FFB4AB", onPrimary:"#690005", primaryContainer:"#93000A", onPrimaryContainer:"#FFDAD6",
+      secondaryContainer:"#5D3F3D", onSecondaryContainer:"#FFDAD6", surface:"#1A1110", surfaceContainer:"#271D1C",
+      surfaceContainerHigh:"#322827", surfaceVariant:"#534341", onSurface:"#F1DEDC", onSurfaceVariant:"#D8C2BF",
+      outline:"#A08C8A", outlineVariant:"#534341", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#E53935","#FFDAD6"]
+  },
+  raspberry: {
+    label: "Малина",
+    light: { primary:"#A03363", onPrimary:"#FFFFFF", primaryContainer:"#FFD9E4", onPrimaryContainer:"#3E0021",
+      secondaryContainer:"#FFD9E4", onSecondaryContainer:"#3E0021", surface:"#FFFBFF", surfaceContainer:"#F4DEE5",
+      surfaceContainerHigh:"#EED8DF", surfaceVariant:"#F5DCE3", onSurface:"#201A1C", onSurfaceVariant:"#524347",
+      outline:"#84737A", outlineVariant:"#D6C2C7", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#FFB0CA", onPrimary:"#62003A", primaryContainer:"#821C4F", onPrimaryContainer:"#FFD9E4",
+      secondaryContainer:"#5C3F4A", onSecondaryContainer:"#FFD9E4", surface:"#1A1115", surfaceContainer:"#271E22",
+      surfaceContainerHigh:"#32282C", surfaceVariant:"#524347", onSurface:"#F1DEE3", onSurfaceVariant:"#D6C2C7",
+      outline:"#9E8C91", outlineVariant:"#524347", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#E91E63","#FFD9E4"]
+  },
+  strawberry: {
+    label: "Клубника",
+    light: { primary:"#C2185B", onPrimary:"#FFFFFF", primaryContainer:"#FFD9E1", onPrimaryContainer:"#3E001D",
+      secondaryContainer:"#FFD9E1", onSecondaryContainer:"#3E001D", surface:"#FFFBFF", surfaceContainer:"#FBDDDF",
+      surfaceContainerHigh:"#F5D7D9", surfaceVariant:"#F7DADD", onSurface:"#201A1A", onSurfaceVariant:"#524345",
+      outline:"#857376", outlineVariant:"#D7C1C3", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#FFB1C6", onPrimary:"#66002C", primaryContainer:"#8E0044", onPrimaryContainer:"#FFD9E1",
+      secondaryContainer:"#5C3F43", onSecondaryContainer:"#FFD9E1", surface:"#1A1113", surfaceContainer:"#271D1F",
+      surfaceContainerHigh:"#32282A", surfaceVariant:"#524345", onSurface:"#F1DEDF", onSurfaceVariant:"#D7C1C3",
+      outline:"#9F8C8F", outlineVariant:"#524345", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#EC407A","#FFD9E1"]
+  },
+  chocolate: {
+    label: "Шоколад",
+    light: { primary:"#6D4C41", onPrimary:"#FFFFFF", primaryContainer:"#F5D9CC", onPrimaryContainer:"#2A160D",
+      secondaryContainer:"#EFDCD3", onSecondaryContainer:"#2A160D", surface:"#FFFBFF", surfaceContainer:"#F4DED5",
+      surfaceContainerHigh:"#EED9D0", surfaceVariant:"#EBDCD4", onSurface:"#211A17", onSurfaceVariant:"#51443E",
+      outline:"#84736C", outlineVariant:"#D6C2B9", error:"#BA1A1A", shadow:"rgba(0,0,0,0.15)" },
+    dark: { primary:"#E1C1B2", onPrimary:"#3F2B22", primaryContainer:"#574136", onPrimaryContainer:"#F5D9CC",
+      secondaryContainer:"#52443C", onSecondaryContainer:"#EFDCD3", surface:"#19120F", surfaceContainer:"#261E1A",
+      surfaceContainerHigh:"#312824", surfaceVariant:"#51443E", onSurface:"#EFE0DA", onSurfaceVariant:"#D6C2B9",
+      outline:"#9F8D85", outlineVariant:"#51443E", error:"#FFB4AB", shadow:"rgba(0,0,0,0.5)" },
+    accent: ["#8D6E63","#E1C1B2"]
+  }
+};
+</script>
+
+<style>
+/* ============================================================ */
+:root {
+  --md-primary:#6750A4; --md-on-primary:#FFF;
+  --md-primary-container:#EADDFF; --md-on-primary-container:#21005D;
+  --md-secondary-container:#E8DEF8; --md-on-secondary-container:#1D192B;
+  --md-surface:#FEF7FF; --md-surface-container:#F3EDF7;
+  --md-surface-container-high:#ECE6F0; --md-surface-variant:#E7E0EC;
+  --md-on-surface:#1D1B20; --md-on-surface-variant:#49454F;
+  --md-outline:#79747E; --md-outline-variant:#CAC4D0;
+  --md-error:#B3261E; --md-shadow:rgba(0,0,0,0.15);
+  --nav-height:80px;
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; }
+body {
+  font-family:'Roboto', system-ui, sans-serif;
+  background: var(--md-surface); color: var(--md-on-surface);
+  line-height:1.5; overflow-x:hidden;
+  transition: background .3s, color .3s;
+}
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+#bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+      opacity: 0; transition: opacity .6s ease; }
+html[data-bg="on"] #bg { opacity: 1; }
+.tri { position: absolute; opacity: 0.16; filter: blur(0.4px);
+       animation: floatTri linear infinite; will-change: transform; }
+html[data-theme="dark"] .tri { opacity: 0.22; }
+.tri svg { width:100%; height:100%; display:block; }
+@keyframes floatTri {
+  0%   { transform: translate(0,0) rotate(var(--r)) scale(1); }
+  25%  { transform: translate(calc(var(--dx) * .3), calc(var(--dy) * .3))
+                  rotate(calc(var(--r) + var(--dr) * .25)) scale(1.05); }
+  50%  { transform: translate(var(--dx), var(--dy))
+                  rotate(calc(var(--r) + var(--dr) * .5)) scale(.96); }
+  75%  { transform: translate(calc(var(--dx) * .6), calc(var(--dy) * .7))
+                  rotate(calc(var(--r) + var(--dr) * .75)) scale(1.03); }
+  100% { transform: translate(0,0) rotate(var(--r)) scale(1); }
+}
+html[data-anim-only="on"] .app,
+html[data-anim-only="on"] .navbar,
+html[data-anim-only="on"] .top-portfolio-bar {
+  opacity: 0 !important; pointer-events: none !important;
+  transition: opacity .4s ease;
+}
+html[data-anim-only="on"] #bg { opacity: 1 !important; }
+
+#animExitHint {
+  position: fixed; left: 50%; bottom: 32px;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(0,0,0,0.65); color: #fff;
+  padding: 10px 18px; border-radius: 999px;
+  font-size: 13px; z-index: 300;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s;
+}
+html[data-anim-only="on"] #animExitHint {
+  opacity: 1; transform: translateX(-50%) translateY(0);
+  pointer-events: auto; cursor: pointer;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.app { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;
+       padding: 16px 16px calc(var(--nav-height) + 32px); }
+.view { display: none; animation: fade .25s ease; }
+.view.active { display: block; }
+@keyframes fade { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform:none; } }
+
+/* ============================================================
+   TOP PORTFOLIO BAR
+   ============================================================ */
+.top-portfolio-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  background: var(--md-surface-container);
+  border-bottom: 1px solid var(--md-outline-variant);
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 12px;
+  transform: translateY(-100%); opacity: 0;
+  transition: transform .35s ease, opacity .35s ease, background .3s;
+  box-shadow: 0 2px 10px var(--md-shadow);
+}
+.top-portfolio-bar.visible { transform: translateY(0); opacity: 1; }
+.top-portfolio-bar .bar-info { flex: 1; min-width: 0; }
+.top-portfolio-bar .bar-name {
+  font-size: 18px; font-weight: 500; color: var(--md-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.top-portfolio-bar .bar-sub {
+  font-size: 12px; color: var(--md-on-surface-variant);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.top-portfolio-bar .to-top-btn {
+  width: 44px; height: 44px; border-radius: 50%; border: none;
+  background: var(--md-secondary-container);
+  color: var(--md-on-secondary-container);
+  cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
+}
+.top-portfolio-bar .to-top-btn:hover { background: var(--md-primary-container); transform: translateY(-2px); }
+.top-portfolio-bar .to-top-btn .material-symbols-rounded { font-size: 24px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-card {
+  background: linear-gradient(135deg, var(--md-primary-container), var(--md-secondary-container));
+  border-radius: 28px; padding: 24px;
+  display: flex; gap: 20px; align-items: center; margin-bottom: 24px;
+  position: relative;
+}
+.hero-share-btn {
+  position: absolute; top: 16px; right: 16px;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: none; background: rgba(255,255,255,0.55);
+  color: var(--md-on-primary-container);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .15s;
+}
+.hero-share-btn:hover { background: rgba(255,255,255,0.9); transform: scale(1.05); }
+.hero-share-btn .material-symbols-rounded { font-size: 22px; }
+
+.avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: var(--md-primary); color: var(--md-on-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px; font-weight: 500; flex-shrink: 0; overflow: hidden;
+}
+.hero-text { flex: 1; min-width: 0; }
+.hero-text h1 { font-size: 26px; font-weight: 500; color: var(--md-on-primary-container); margin-bottom: 2px; }
+.hero-text .role { font-size: 15px; color: var(--md-on-primary-container); opacity: .85; margin-bottom: 10px; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.hero-links a {
+  font-size: 12px; padding: 5px 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.55); color: var(--md-on-primary-container);
+  display: inline-flex; align-items: center; gap: 4px; text-decoration: none;
+}
+.hero-links a:hover { background: rgba(255,255,255,0.85); }
+.hero-links .material-symbols-rounded { font-size: 16px; }
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.section-head { display: flex; align-items: center; gap: 8px; margin: 8px 0 16px; flex-wrap: wrap; }
+.section-head h2 { font-size: 20px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.section-head h2 .material-symbols-rounded { color: var(--md-primary); }
+.counter { font-size: 13px; color: var(--md-on-surface-variant); margin-left: auto; }
+
+/* ============================================================
+   TOOLBAR
+   ============================================================ */
+.toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.tool-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface); color: var(--md-on-surface-variant);
+  font-size: 13px; cursor: pointer; transition: all .15s;
+  font-family: inherit;
+}
+.tool-btn:hover { background: var(--md-surface-container); }
+.tool-btn .material-symbols-rounded { font-size: 18px; }
+.tool-spacer { flex: 1; }
+
+.menu-wrap { position: relative; }
+.menu {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 240px; background: var(--md-surface-container-high);
+  border-radius: 12px; padding: 8px;
+  box-shadow: 0 6px 20px var(--md-shadow);
+  display: none; z-index: 50;
+}
+.menu.open { display: block; }
+.menu button {
+  display: flex; width: 100%; align-items: center; gap: 8px;
+  padding: 10px 12px; border: none; background: transparent;
+  color: var(--md-on-surface); font-size: 14px;
+  border-radius: 8px; cursor: pointer; text-align: left; font-family: inherit;
+}
+.menu button:hover { background: var(--md-surface-variant); }
+.menu button.active { background: var(--md-secondary-container); }
+.menu button .material-symbols-rounded { font-size: 18px; color: var(--md-on-surface-variant); }
+
+.view-toggle {
+  display: inline-flex; border: 1px solid var(--md-outline);
+  border-radius: 999px; overflow: hidden; background: var(--md-surface);
+}
+.view-toggle button {
+  border: none; background: transparent; padding: 8px 12px;
+  cursor: pointer; color: var(--md-on-surface-variant);
+  display: flex; align-items: center;
+}
+.view-toggle button:hover { background: var(--md-surface-container); }
+.view-toggle button.active { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
+.view-toggle .material-symbols-rounded { font-size: 20px; }
+
+/* ============================================================
+   TAGS ROW
+   ============================================================ */
+.tags-row {
+  display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 16px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-outline-variant) transparent;
+}
+.tags-row::-webkit-scrollbar { height: 6px; }
+.tags-row::-webkit-scrollbar-track { background: transparent; }
+.tags-row::-webkit-scrollbar-thumb { background: var(--md-outline-variant); border-radius: 999px; }
+.tag-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 8px;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface); color: var(--md-on-surface-variant);
+  font-size: 13px; cursor: pointer; user-select: none;
+  transition: all .15s; font-family: inherit;
+  flex-shrink: 0; white-space: nowrap;
+  scroll-snap-align: start;
+}
+.tag-chip:hover { background: var(--md-surface-container); }
+.tag-chip.active { background: var(--md-secondary-container); color: var(--md-on-secondary-container); border-color: transparent; }
+.tag-chip .count { font-size: 11px; opacity: .8; background: var(--md-surface-variant); padding: 0 6px; border-radius: 6px; }
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+.search-field {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--md-surface-variant);
+  border-radius: 28px; padding: 0 16px; height: 56px;
+  margin-bottom: 16px; transition: box-shadow .2s;
+}
+.search-field:focus-within { box-shadow: 0 0 0 2px var(--md-primary); }
+.search-field .material-symbols-rounded { color: var(--md-on-surface-variant); }
+.search-field input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-size: 16px; color: var(--md-on-surface); font-family: inherit;
+}
+.search-field input::placeholder { color: var(--md-on-surface-variant); }
+
+/* ============================================================
+   GRID / TABLE / CARDS
+   ============================================================ */
+.grid { display: grid; gap: 14px; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 720px) { .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 16px; padding: 18px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: box-shadow .2s, transform .2s;
+  cursor: pointer; position: relative;
+}
+.card:hover { box-shadow: 0 4px 14px var(--md-shadow); transform: translateY(-2px); }
+.card-top { display: flex; align-items: flex-start; gap: 12px; }
+.card-icon {
+  width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+  background: var(--md-primary-container); color: var(--md-on-primary-container);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-icon .material-symbols-rounded { font-size: 24px; }
+.card h3 { font-size: 16px; font-weight: 500; color: var(--md-on-surface); flex: 1; }
+.card p { font-size: 13.5px; color: var(--md-on-surface-variant); }
+.card .meta { display: flex; flex-wrap: wrap; gap: 5px; }
+.card .meta .tag {
+  font-size: 11px; padding: 3px 8px; border-radius: 6px;
+  background: var(--md-secondary-container); color: var(--md-on-secondary-container);
+}
+.card-foot { display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 6px; }
+.card .date { font-size: 12px; color: var(--md-on-surface-variant); display: flex; align-items: center; gap: 4px; }
+.card .date .material-symbols-rounded { font-size: 15px; }
+.help-btn {
+  margin-left: auto; width: 30px; height: 30px; border-radius: 50%;
+  border: none; background: transparent; color: var(--md-on-surface-variant);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.help-btn:hover { background: var(--md-surface-variant); }
+.help-btn .material-symbols-rounded { font-size: 20px; }
+
+.table-wrap {
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface-container);
+}
+table { width: 100%; border-collapse: collapse; }
+thead { background: var(--md-surface-container-high); }
+th, td { padding: 12px 14px; text-align: left; font-size: 13.5px; }
+th { font-weight: 500; color: var(--md-on-surface-variant); font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; }
+tbody tr { border-top: 1px solid var(--md-outline-variant); cursor: pointer; transition: background .15s; }
+tbody tr:hover { background: var(--md-surface-container-high); }
+td .tag {
+  font-size: 11px; padding: 3px 8px; border-radius: 6px;
+  background: var(--md-secondary-container); color: var(--md-on-secondary-container);
+  display: inline-block; margin: 2px 2px 2px 0;
+}
+.table-title { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.table-title .material-symbols-rounded { font-size: 20px; color: var(--md-primary); }
+
+.empty { text-align: center; padding: 48px 16px; color: var(--md-on-surface-variant); }
+.empty .material-symbols-rounded { font-size: 48px; opacity: .5; margin-bottom: 8px; }
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+.settings-card {
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 20px; padding: 20px; margin-bottom: 16px;
+}
+.settings-card h3 {
+  font-size: 15px; font-weight: 500; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.settings-card h3 .material-symbols-rounded { color: var(--md-primary); font-size: 20px; }
+.setting-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 10px 0;
+}
+.setting-row + .setting-row { border-top: 1px solid var(--md-outline-variant); }
+.setting-row .label { font-size: 14px; }
+.setting-row .label small { display: block; font-size: 12px; color: var(--md-on-surface-variant); }
+
+.setting-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; width: 100%; padding: 12px 0;
+  background: transparent; border: none;
+  color: var(--md-on-surface); font-family: inherit;
+  font-size: 14px; cursor: pointer; text-align: left;
+}
+.setting-btn:hover .setting-btn-value { color: var(--md-primary); }
+.setting-btn .setting-btn-value {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--md-on-surface-variant); transition: color .15s;
+}
+.setting-btn .material-symbols-rounded { font-size: 20px; }
+
+.preview-anim-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface); color: var(--md-primary);
+  font-size: 13px; font-family: inherit; cursor: pointer;
+  transition: background .15s; flex-shrink: 0;
+}
+.preview-anim-btn:hover { background: var(--md-surface-container); }
+.preview-anim-btn .material-symbols-rounded { font-size: 18px; }
+
+/* Кнопка сброса настроек */
+.reset-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--md-outline);
+  background: var(--md-surface); color: var(--md-error);
+  font-size: 13px; font-family: inherit; cursor: pointer;
+  transition: background .15s; flex-shrink: 0;
+}
+.reset-btn:hover { background: var(--md-surface-container); }
+.reset-btn .material-symbols-rounded { font-size: 18px; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 100;
+  background: var(--md-surface-container);
+  border-top: 1px solid var(--md-outline-variant);
+  display: flex; justify-content: space-around; align-items: center;
+  height: var(--nav-height);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  transition: background .3s;
+}
+.nav-item {
+  flex: 1; border: none; background: transparent;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 8px; cursor: pointer;
+  color: var(--md-on-surface-variant); font-size: 12px; font-family: inherit;
+  transition: color .2s;
+}
+.nav-item .icon-wrap {
+  width: 64px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px; transition: background .2s;
+}
+.nav-item .material-symbols-rounded { font-size: 24px; }
+.nav-item.active { color: var(--md-on-secondary-container); }
+.nav-item.active .icon-wrap { background: var(--md-secondary-container); }
+
+/* ============================================================
+   DIALOG
+   ============================================================ */
+dialog {
+  position: fixed; inset: 0; margin: auto;
+  border: none; border-radius: 24px; padding: 0;
+  background: var(--md-surface-container-high);
+  color: var(--md-on-surface);
+  max-width: 460px; width: calc(100% - 40px);
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  opacity: 0; transform: scale(0.92);
+  transition: opacity .22s ease, transform .22s ease;
+}
+dialog[open] { opacity: 1; transform: scale(1); }
+dialog::backdrop { background: rgba(0,0,0,0); transition: background .25s ease; }
+dialog[open]::backdrop { background: rgba(0,0,0,0.45); }
+dialog.closing { opacity: 0; transform: scale(0.92); }
+dialog.closing::backdrop { background: rgba(0,0,0,0); }
+
+.dlg-body { padding: 24px; text-align: center; }
+.dlg-body .dlg-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--md-primary-container); color: var(--md-on-primary-container);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.dlg-body .dlg-icon .material-symbols-rounded { font-size: 30px; }
+.dlg-body h3 { font-size: 18px; margin-bottom: 8px; font-weight: 500; }
+.dlg-body p { font-size: 14px; color: var(--md-on-surface-variant); margin-bottom: 20px; }
+.dlg-actions { display: flex; justify-content: flex-end; gap: 8px; padding: 0 24px 20px; }
+.btn {
+  padding: 10px 20px; border-radius: 999px; border: none;
+  font-size: 14px; font-family: inherit; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-text { background: transparent; color: var(--md-primary); }
+.btn-text:hover { background: var(--md-surface-variant); }
+.btn-filled { background: var(--md-primary); color: var(--md-on-primary); text-decoration: none; }
+.btn-filled:hover { box-shadow: 0 2px 8px var(--md-shadow); }
+
+/* ============================================================
+   DIALOG: список выбора
+   ============================================================ */
+.dlg-list { padding: 0 8px 8px; }
+.dlg-title-block { padding: 24px 24px 12px; text-align: left; }
+.dlg-title-block h3 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+.dlg-title-block .sub { font-size: 13px; color: var(--md-on-surface-variant); }
+.dlg-list-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px; border-radius: 14px;
+  border: none; background: transparent;
+  color: var(--md-on-surface); font-family: inherit;
+  font-size: 15px; cursor: pointer; text-align: left;
+  width: 100%; transition: background .15s;
+}
+.dlg-list-item:hover { background: var(--md-surface-variant); }
+.dlg-list-item.active { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
+.dlg-list-item .item-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--md-surface-variant);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--md-on-surface-variant); flex-shrink: 0;
+  transition: background .15s, color .15s;
+}
+.dlg-list-item.active .item-icon { background: var(--md-primary); color: var(--md-on-primary); }
+.dlg-list-item .item-icon .material-symbols-rounded { font-size: 20px; }
+.dlg-list-item .item-text { flex: 1; }
+.dlg-list-item .item-text small {
+  display: block; font-size: 12px;
+  color: var(--md-on-surface-variant); margin-top: 2px;
+}
+.dlg-list-item.active .item-text small { color: var(--md-on-secondary-container); opacity: .8; }
+
+/* Превью схемы */
+.scheme-preview {
+  width: 60px; height: 44px; border-radius: 10px;
+  border: 1px solid var(--md-outline-variant);
+  overflow: hidden; flex-shrink: 0;
+  display: flex; flex-direction: column;
+  background: var(--prev-surface, #FEF7FF);
+}
+.scheme-preview .prev-bar {
+  height: 10px; background: var(--prev-primary-container, #EADDFF);
+  display: flex; align-items: center; padding: 0 3px; gap: 2px;
+}
+.scheme-preview .prev-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: var(--prev-primary, #6750A4);
+}
+.scheme-preview .prev-body {
+  flex: 1; padding: 3px; display: flex; flex-direction: column; gap: 2px;
+}
+.scheme-preview .prev-line {
+  height: 3px; border-radius: 2px;
+  background: var(--prev-secondary-container, #E8DEF8);
+}
+.scheme-preview .prev-line.short { width: 60%; }
+.scheme-preview .prev-accent {
+  height: 5px; border-radius: 2px; width: 40%;
+  background: var(--prev-primary, #6750A4);
+}
+
+/* ============================================================
+   DIALOG SHARE
+   ============================================================ */
+.share-link-box {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--md-surface-variant);
+  border-radius: 12px; padding: 6px 6px 6px 14px;
+  margin: 0 24px 16px;
+}
+.share-link-box input {
+  flex: 1; border: none; outline: none; background: transparent;
+  font-size: 13px; color: var(--md-on-surface); font-family: inherit;
+  min-width: 0;
+}
+.share-link-box .copy-btn {
+  border: none; background: var(--md-primary); color: var(--md-on-primary);
+  border-radius: 8px; padding: 8px 12px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 13px; font-family: inherit;
+  transition: background .15s;
+}
+.share-link-box .copy-btn:hover { box-shadow: 0 2px 8px var(--md-shadow); }
+.share-link-box .copy-btn .material-symbols-rounded { font-size: 16px; }
+
+.share-socials {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; padding: 0 24px 20px;
+}
+.share-social {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 12px 6px; border-radius: 14px;
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface-container);
+  color: var(--md-on-surface); cursor: pointer; text-decoration: none;
+  font-size: 11px; font-family: inherit;
+  transition: background .15s, transform .15s;
+}
+.share-social:hover { background: var(--md-surface-variant); transform: translateY(-2px); }
+.share-social .material-symbols-rounded { font-size: 22px; color: var(--md-primary); }
+
+/* ============================================================
+   SNACKBAR (тост "Скопировано")
+   ============================================================ */
+#snackbar {
+  position: fixed; left: 50%; bottom: calc(var(--nav-height) + 16px);
+  transform: translateX(-50%) translateY(20px);
+  background: var(--md-on-surface); color: var(--md-surface);
+  padding: 12px 20px; border-radius: 8px;
+  font-size: 14px; z-index: 200;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, transform .25s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+#snackbar.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div class="top-portfolio-bar" id="topPortfolioBar">
+  <div class="bar-info">
+    <div class="bar-name" id="barName">Лев Гнилозуб</div>
+    <div class="bar-sub" id="barSub">Портфолио (обновлено октябрь 2026)</div>
+  </div>
+  <button class="to-top-btn" id="toTopBtn" title="Наверх">
+    <span class="material-symbols-rounded">arrow_upward</span>
+  </button>
+</div>
+
+<main class="app">
+  <!-- PORTFOLIO -->
+  <section class="view active" id="view-portfolio">
+    <div class="hero-card">
+      <button class="hero-share-btn" id="shareBtnHero" title="Поделиться">
+        <span class="material-symbols-rounded">share</span>
+      </button>
+      <div class="avatar">ЛГ</div>
+      <div class="hero-text">
+        <h1 id="hero-name">Лев Гнилозуб</h1>
+        <div class="role" id="hero-role">Разработчик · Основатель Quantum ACD · LVGB</div>
+        <div class="hero-links" id="hero-links"></div>
+      </div>
+    </div>
+
+    <div class="section-head">
+      <h2><span class="material-symbols-rounded">emoji_events</span>Награды и достижения</h2>
+      <span class="counter" id="counter-p"></span>
+    </div>
+
+    <div class="toolbar">
+      <div class="menu-wrap">
+        <button class="tool-btn" id="sortBtnP">
+          <span class="material-symbols-rounded">sort</span>
+          <span id="sortLabelP">По дате (новые)</span>
+        </button>
+        <div class="menu" id="sortMenuP">
+          <button data-sort="date-desc"><span class="material-symbols-rounded">arrow_downward</span>По дате (новые)</button>
+          <button data-sort="date-asc"><span class="material-symbols-rounded">arrow_upward</span>По дате (старые)</button>
+          <button data-sort="title"><span class="material-symbols-rounded">sort_by_alpha</span>По названию (А–Я)</button>
+          <button data-sort="tags"><span class="material-symbols-rounded">label</span>По тегам (А–Я)</button>
+          <button data-sort="tags-count"><span class="material-symbols-rounded">numbers</span>По кол-ву тегов</button>
+        </div>
+      </div>
+      <div class="tool-spacer"></div>
+      <div class="view-toggle" id="viewToggleP">
+        <button data-view="cols-3" class="active" title="3 в ряд"><span class="material-symbols-rounded">grid_view</span></button>
+        <button data-view="cols-2" title="2 в ряд"><span class="material-symbols-rounded">view_module</span></button>
+        <button data-view="table" title="Таблица"><span class="material-symbols-rounded">table_rows</span></button>
+      </div>
+    </div>
+
+    <div id="resultsP"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <section class="view" id="view-search">
+    <div class="section-head">
+      <h2><span class="material-symbols-rounded">search</span>Поиск</h2>
+      <span class="counter" id="counter-s"></span>
+    </div>
+
+    <div class="search-field">
+      <span class="material-symbols-rounded">search</span>
+      <input id="searchInput" type="text" placeholder="Название, описание, тег..." />
+      <span class="material-symbols-rounded" id="clearSearch" style="cursor:pointer; display:none;">close</span>
+    </div>
+
+    <div class="tags-row" id="tagsRow"></div>
+
+    <div class="toolbar">
+      <div class="menu-wrap">
+        <button class="tool-btn" id="sortBtnS">
+          <span class="material-symbols-rounded">sort</span>
+          <span id="sortLabelS">По дате (новые)</span>
+        </button>
+        <div class="menu" id="sortMenuS">
+          <button data-sort="date-desc"><span class="material-symbols-rounded">arrow_downward</span>По дате (новые)</button>
+          <button data-sort="date-asc"><span class="material-symbols-rounded">arrow_upward</span>По дате (старые)</button>
+          <button data-sort="title"><span class="material-symbols-rounded">sort_by_alpha</span>По названию (А–Я)</button>
+          <button data-sort="tags"><span class="material-symbols-rounded">label</span>По тегам (А–Я)</button>
+          <button data-sort="tags-count"><span class="material-symbols-rounded">numbers</span>По кол-ву тегов</button>
+        </div>
+      </div>
+      <div class="tool-spacer"></div>
+      <div class="view-toggle" id="viewToggleS">
+        <button data-view="cols-3" class="active" title="3 в ряд"><span class="material-symbols-rounded">grid_view</span></button>
+        <button data-view="cols-2" title="2 в ряд"><span class="material-symbols-rounded">view_module</span></button>
+        <button data-view="table" title="Таблица"><span class="material-symbols-rounded">table_rows</span></button>
+      </div>
+    </div>
+
+    <div id="resultsS"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="view" id="view-settings">
+    <div class="section-head">
+      <h2><span class="material-symbols-rounded">settings</span>Настройки</h2>
+    </div>
+
+    <div class="settings-card">
+      <h3><span class="material-symbols-rounded">palette</span>Оформление</h3>
+
+      <button class="setting-btn" id="openThemeBtn">
+        <div class="label">Тема<small>Светлая / тёмная / авто</small></div>
+        <span class="setting-btn-value">
+          <span id="themeLabel">Авто</span>
+          <span class="material-symbols-rounded">chevron_right</span>
+        </span>
+      </button>
+
+      <button class="setting-btn" id="openSchemeBtn">
+        <div class="label">Цветовая схема<small>Палитра всего интерфейса</small></div>
+        <span class="setting-btn-value">
+          <span class="scheme-preview" id="currentSchemePreview"></span>
+          <span id="schemeLabel">Виноград</span>
+          <span class="material-symbols-rounded">chevron_right</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="settings-card">
+      <h3><span class="material-symbols-rounded">animation</span>Фон</h3>
+      <div class="setting-row">
+        <div class="label">Анимированные треугольники<small>Плавно плавают на фоне</small></div>
+        <label class="switch">
+          <input type="checkbox" id="bgToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-row">
+        <div class="label">Предпросмотр<small>Скрыть интерфейс и посмотреть анимацию</small></div>
+        <button class="preview-anim-btn" id="previewAnimBtn">
+          <span class="material-symbols-rounded">play_circle</span>
+          Посмотреть анимацию
+        </button>
+      </div>
+    </div>
+
+    <div class="settings-card">
+      <h3><span class="material-symbols-rounded">save</span>Данные</h3>
+      <div class="setting-row">
+        <div class="label">Сохранение настроек<small>Все выбранные параметры хранятся в браузере</small></div>
+        <span style="font-size:12px;color:var(--md-on-surface-variant);">Включено</span>
+      </div>
+      <div class="setting-row">
+        <div class="label">Сбросить настройки<small>Вернуть всё к значениям по умолчанию</small></div>
+        <button class="reset-btn" id="resetSettingsBtn">
+          <span class="material-symbols-rounded">restart_alt</span>
+          Сбросить
+        </button>
+      </div>
+    </div>
+
+    <div class="settings-card">
+      <h3><span class="material-symbols-rounded">info</span>О проекте</h3>
+      <p style="font-size:13.5px;color:var(--md-on-surface-variant)">
+        Персональное портфолио Льва Гнилозуб — разработчика и основателя Quantum ACD,
+        автора музыки под ником LVGB. (Имя склоняется, фамилия — нет.)
+      </p>
+    </div>
+  </section>
+</main>
+
+<nav class="navbar">
+  <button class="nav-item active" data-view="portfolio">
+    <div class="icon-wrap"><span class="material-symbols-rounded">emoji_events</span></div>
+    Портфолио
+  </button>
+  <button class="nav-item" data-view="search">
+    <div class="icon-wrap"><span class="material-symbols-rounded">search</span></div>
+    Поиск
+  </button>
+  <button class="nav-item" data-view="settings">
+    <div class="icon-wrap"><span class="material-symbols-rounded">settings</span></div>
+    Настройки
+  </button>
+</nav>
+
+<div id="animExitHint">Нажмите в любом месте, чтобы вернуться</div>
+
+<!-- Snackbar -->
+<div id="snackbar"></div>
+
+<!-- DIALOG: no link -->
+<dialog id="dlgNoLink">
+  <div class="dlg-body">
+    <div class="dlg-icon"><span class="material-symbols-rounded">help</span></div>
+    <h3>Награда не сохранена</h3>
+    <p>Награда временно недоступна в цифровом варианте или отсутствует.</p>
+  </div>
+  <div class="dlg-actions">
+    <button class="btn btn-filled" data-close-dialog>Понятно</button>
+  </div>
+</dialog>
+
+<!-- DIALOG: open link -->
+<dialog id="dlgLink">
+  <div class="dlg-body">
+    <div class="dlg-icon"><span class="material-symbols-rounded">open_in_new</span></div>
+    <h3 id="dlgLinkTitle">Открыть награду?</h3>
+    <p id="dlgLinkDesc">Ссылка откроется в новой вкладке.</p>
+  </div>
+  <div class="dlg-actions">
+    <button class="btn btn-text" data-close-dialog>Отмена</button>
+    <a class="btn btn-filled" id="dlgLinkGo" href="#" target="_blank" rel="noopener">Открыть</a>
+  </div>
+</dialog>
+
+<!-- DIALOG: тема -->
+<dialog id="dlgTheme">
+  <div class="dlg-title-block">
+    <h3>Тема</h3>
+    <div class="sub">Авто</div>
+  </div>
+  <div class="dlg-list" id="themeList">
+    <button class="dlg-list-item" data-theme-option="light">
+      <div class="item-icon"><span class="material-symbols-rounded">light_mode</span></div>
+      <div class="item-text">Светлая<small>Всегда светлое оформление</small></div>
+    </button>
+    <button class="dlg-list-item" data-theme-option="dark">
+      <div class="item-icon"><span class="material-symbols-rounded">dark_mode</span></div>
+      <div class="item-text">Тёмная<small>Всегда тёмное оформление</small></div>
+    </button>
+    <button class="dlg-list-item" data-theme-option="auto">
+      <div class="item-icon"><span class="material-symbols-rounded">brightness_auto</span></div>
+      <div class="item-text">Авто<small>Как в системе</small></div>
+    </button>
+  </div>
+</dialog>
+
+<!-- DIALOG: схема -->
+<dialog id="dlgScheme">
+  <div class="dlg-title-block">
+    <h3>Цветовая схема</h3>
+    <div class="sub">Выбери палитру оформления</div>
+  </div>
+  <div class="dlg-list" id="schemeList"></div>
+</dialog>
+
+<!-- DIALOG: поделиться -->
+<dialog id="dlgShare">
+  <div class="dlg-title-block">
+    <h3>Поделиться</h3>
+    <div class="sub">Ссылка на портфолио</div>
+  </div>
+
+  <div class="share-link-box">
+    <input id="shareLinkInput" type="text" readonly />
+    <button class="copy-btn" id="copyShareBtn">
+      <span class="material-symbols-rounded">content_copy</span>
+      Копировать
+    </button>
+  </div>
+
+  <div class="share-socials">
+    <a class="share-social" id="shareNative" href="#" title="Системное меню">
+      <span class="material-symbols-rounded">share</span>
+      Система
+    </a>
+    <a class="share-social" data-share="telegram" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">send</span>
+      Telegram
+    </a>
+    <a class="share-social" data-share="whatsapp" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">chat</span>
+      WhatsApp
+    </a>
+    <a class="share-social" data-share="vk" target="_blank" rel="noopener">
+      <span class="material-symbols-rounded">group</span>
+      VK
+    </a>
+  </div>
+</dialog>
+
+<script>
+/* ============================================================
+   СОСТОЯНИЕ + ЗАГРУЗКА ИЗ LOCALSTORAGE
+   ============================================================ */
+const STORAGE_KEY = "lvgb_portfolio_settings_v1";
+
+const DEFAULTS = {
+  sort: "date-desc",
+  view: "cols-3",
+  theme: "auto",
+  scheme: "grape",
+  bg: true,
+  activeTags: []
+};
+
+function loadSettings() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return { ...DEFAULTS };
+    const parsed = JSON.parse(raw);
+    return { ...DEFAULTS, ...parsed };
+  } catch (e) {
+    return { ...DEFAULTS };
+  }
+}
+
+function saveSettings() {
+  try {
+    const payload = {
+      sort: state.sort,
+      view: state.view,
+      theme: state.theme,
+      scheme: state.scheme,
+      bg: state.bg,
+      activeTags: [...state.activeTags]
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch (e) { /* приватный режим и т.п. — игнорируем */ }
+}
+
+const saved = loadSettings();
+
+const state = {
+  sort: saved.sort,
+  view: saved.view,
+  search: "",
+  activeTags: new Set(saved.activeTags),
+  theme: saved.theme,
+  scheme: saved.scheme,
+  bg: saved.bg
+};
+
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+/* ============================================================
+   УТИЛИТЫ
+   ============================================================ */
+function sortLabel(s) {
+  return {
+    "date-desc": "По дате (новые)",
+    "date-asc":  "По дате (старые)",
+    "title":     "По названию (А–Я)",
+    "tags":      "По тегам (А–Я)",
+    "tags-count":"По кол-ву тегов"
+  }[s] || "По дате (новые)";
+}
+function allTags() {
+  const map = new Map();
+  AWARDS.forEach(a => a.tags.forEach(t => map.set(t, (map.get(t) || 0) + 1)));
+  return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0], "ru"));
+}
+function sortAwards(list, sort) {
+  const arr = [...list];
+  switch (sort) {
+    case "date-desc": return arr.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    case "date-asc":  return arr.sort((a, b) => (a.date || "").localeCompare(b.date || ""));
+    case "title":     return arr.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    case "tags":      return arr.sort((a, b) => (a.tags[0] || "").localeCompare(b.tags[0] || "", "ru"));
+    case "tags-count":return arr.sort((a, b) => b.tags.length - a.tags.length);
+    default: return arr;
+  }
+}
+function filterAwards({ search, tags }) {
+  const q = (search || "").trim().toLowerCase();
+  return AWARDS.filter(a => {
+    const matchTags = tags.size === 0 || a.tags.some(t => tags.has(t));
+    const matchText = !q ||
+      a.title.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.tags.some(t => t.toLowerCase().includes(q));
+    return matchTags && matchText;
+  });
+}
+
+/* ============================================================
+   ТЕМА И СХЕМА
+   ============================================================ */
+const mql = window.matchMedia("(prefers-color-scheme: dark)");
+function resolveSchemeVariant() {
+  let t = state.theme;
+  if (t === "auto") t = mql.matches ? "dark" : "light";
+  const scheme = COLOR_SCHEMES[state.scheme] || COLOR_SCHEMES.grape;
+  return { variant: t, colors: scheme[t] };
+}
+function applyScheme() {
+  const { variant, colors } = resolveSchemeVariant();
+  const r = document.documentElement;
+  r.setAttribute("data-theme", variant);
+  r.style.setProperty("--md-primary", colors.primary);
+  r.style.setProperty("--md-on-primary", colors.onPrimary);
+  r.style.setProperty("--md-primary-container", colors.primaryContainer);
+  r.style.setProperty("--md-on-primary-container", colors.onPrimaryContainer);
+  r.style.setProperty("--md-secondary-container", colors.secondaryContainer);
+  r.style.setProperty("--md-on-secondary-container", colors.onSecondaryContainer);
+  r.style.setProperty("--md-surface", colors.surface);
+  r.style.setProperty("--md-surface-container", colors.surfaceContainer);
+  r.style.setProperty("--md-surface-container-high", colors.surfaceContainerHigh);
+  r.style.setProperty("--md-surface-variant", colors.surfaceVariant);
+  r.style.setProperty("--md-on-surface", colors.onSurface);
+  r.style.setProperty("--md-on-surface-variant", colors.onSurfaceVariant);
+  r.style.setProperty("--md-outline", colors.outline);
+  r.style.setProperty("--md-outline-variant", colors.outlineVariant);
+  r.style.setProperty("--md-error", colors.error);
+  r.style.setProperty("--md-shadow", colors.shadow);
+}
+mql.addEventListener("change", () => { if (state.theme === "auto") applyScheme(); });
+
+function makePreview(schemeKey) {
+  const scheme = COLOR_SCHEMES[schemeKey];
+  const { variant } = resolveSchemeVariant();
+  const c = scheme[variant];
+  const el = document.createElement("span");
+  el.className = "scheme-preview";
+  el.style.setProperty("--prev-surface", c.surface);
+  el.style.setProperty("--prev-primary", c.primary);
+  el.style.setProperty("--prev-primary-container", c.primaryContainer);
+  el.style.setProperty("--prev-secondary-container", c.secondaryContainer);
+  el.innerHTML = `
+    <div class="prev-bar"><span class="prev-dot"></span><span class="prev-dot"></span></div>
+    <div class="prev-body">
+      <div class="prev-accent"></div>
+      <div class="prev-line"></div>
+      <div class="prev-line short"></div>
+    </div>
+  `;
+  return el;
+}
+
+/* ============================================================
+   РЕНДЕР
+   ============================================================ */
+function renderHero() {
+  $("#hero-name").textContent = ME.name;
+  $("#hero-role").textContent = ME.role;
+  const box = $("#hero-links");
+  box.innerHTML = "";
+  ME.links.forEach(l => {
+    const a = document.createElement("a");
+    a.href = l.url; a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = `<span class="material-symbols-rounded">${l.icon}</span>${l.label}`;
+    box.appendChild(a);
+  });
+  $("#barName").textContent = ME.name;
+  $("#barSub").textContent = `Портфолио (обновлено ${ME.updated})`;
+}
+
+function awardCard(a) {
+  const card = document.createElement("div");
+  card.className = "card";
+  const hasLink = !!a.link;
+  card.innerHTML = `
+    <div class="card-top">
+      <div class="card-icon"><span class="material-symbols-rounded">${a.icon}</span></div>
+      <h3>${a.title}</h3>
+    </div>
+    <p>${a.desc}</p>
+    <div class="meta">${a.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+    <div class="card-foot">
+      <div class="date"><span class="material-symbols-rounded">calendar_today</span>${a.date}</div>
+      ${hasLink
+        ? `<span class="date" style="margin-left:auto;color:var(--md-primary)">
+             <span class="material-symbols-rounded">open_in_new</span>Открыть
+           </span>`
+        : `<button class="help-btn" data-help="1" title="Награда не сохранена">
+             <span class="material-symbols-rounded">help</span>
+           </button>`}
+    </div>
+  `;
+  if (hasLink) {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("[data-help]")) return;
+      openLinkDialog(a);
+    });
+  } else {
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("[data-help]")) e.stopPropagation();
+      openNoLinkDialog();
+    });
+  }
+  return card;
+}
+
+function awardRow(a) {
+  const tr = document.createElement("tr");
+  const hasLink = !!a.link;
+  tr.innerHTML = `
+    <td>
+      <div class="table-title">
+        <span class="material-symbols-rounded">${a.icon}</span>
+        ${a.title}
+      </div>
+    </td>
+    <td>${a.tags.map(t => `<span class="tag">${t}</span>`).join("")}</td>
+    <td>${a.date}</td>
+    <td>${hasLink
+      ? `<span class="material-symbols-rounded" style="color:var(--md-primary);font-size:20px;">open_in_new</span>`
+      : `<button class="help-btn" data-help="1"><span class="material-symbols-rounded">help</span></button>`}
+    </td>
+  `;
+  tr.addEventListener("click", (e) => {
+    if (e.target.closest("[data-help]")) { openNoLinkDialog(); return; }
+    if (hasLink) openLinkDialog(a);
+    else openNoLinkDialog();
+  });
+  return tr;
+}
+
+function renderResults(containerId, counterId) {
+  const container = document.getElementById(containerId);
+  const counter = document.getElementById(counterId);
+  const filtered = filterAwards({ search: state.search, tags: state.activeTags });
+  const sorted = sortAwards(filtered, state.sort);
+  counter.textContent = `${sorted.length} из ${AWARDS.length}`;
+  container.innerHTML = "";
+  if (sorted.length === 0) {
+    container.innerHTML = `
+      <div class="empty">
+        <span class="material-symbols-rounded">search_off</span>
+        <p>Ничего не найдено. Попробуй изменить запрос или теги.</p>
+      </div>`;
+    return;
+  }
+  if (state.view === "table") {
+    const wrap = document.createElement("div");
+    wrap.className = "table-wrap";
+    const table = document.createElement("table");
+    table.innerHTML = `<thead><tr><th>Название</th><th>Теги</th><th>Дата</th><th></th></tr></thead>`;
+    const tbody = document.createElement("tbody");
+    sorted.forEach(a => tbody.appendChild(awardRow(a)));
+    table.appendChild(tbody);
+    wrap.appendChild(table);
+    container.appendChild(wrap);
+  } else {
+    const grid = document.createElement("div");
+    grid.className = `grid ${state.view}`;
+    sorted.forEach(a => grid.appendChild(awardCard(a)));
+    container.appendChild(grid);
+  }
+}
+
+function renderTagsRow() {
+  const row = $("#tagsRow");
+  row.innerHTML = "";
+  allTags().forEach(([t, count]) => {
+    const chip = document.createElement("button");
+    chip.className = "tag-chip" + (state.activeTags.has(t) ? " active" : "");
+    chip.innerHTML = `<span class="material-symbols-rounded" style="font-size:16px;">label</span>${t}<span class="count">${count}</span>`;
+    chip.onclick = () => {
+      if (state.activeTags.has(t)) state.activeTags.delete(t);
+      else state.activeTags.add(t);
+      renderTagsRow();
+      renderResults("resultsS", "counter-s");
+      saveSettings();
+    };
+    row.appendChild(chip);
+  });
+}
+
+/* ============================================================
+   ДИАЛОГИ
+   ============================================================ */
+function openDialog(dlg) { dlg.classList.remove("closing"); dlg.showModal(); }
+function closeDialog(dlg) {
+  dlg.classList.add("closing");
+  setTimeout(() => { dlg.close(); dlg.classList.remove("closing"); }, 200);
+}
+function openNoLinkDialog() { openDialog($("#dlgNoLink")); }
+function openLinkDialog(a) {
+  $("#dlgLinkTitle").textContent = a.title;
+  $("#dlgLinkDesc").textContent = "Ссылка откроется в новой вкладке.";
+  $("#dlgLinkGo").href = a.link;
+  openDialog($("#dlgLink"));
+}
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-close-dialog]");
+  if (btn) {
+    const dlg = btn.closest("dialog");
+    if (dlg) closeDialog(dlg);
+  }
+});
+$$("dialog").forEach(dlg => {
+  dlg.addEventListener("click", (e) => {
+    const rect = dlg.getBoundingClientRect();
+    const inDialog = e.clientX >= rect.left && e.clientX <= rect.right &&
+                     e.clientY >= rect.top  && e.clientY <= rect.bottom;
+    if (!inDialog) closeDialog(dlg);
+  });
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const openDlg = document.querySelector("dialog[open]");
+    if (openDlg) { e.preventDefault(); closeDialog(openDlg); }
+  }
+});
+
+/* ============================================================
+   SNACKBAR
+   ============================================================ */
+let snackTimer;
+function showSnackbar(text) {
+  const el = $("#snackbar");
+  el.textContent = text;
+  el.classList.add("show");
+  clearTimeout(snackTimer);
+  snackTimer = setTimeout(() => el.classList.remove("show"), 2200);
+}
+
+/* ============================================================
+   ФОН
+   ============================================================ */
+function initBackground() {
+  const bg = document.getElementById("bg");
+  bg.innerHTML = "";
+  const scheme = COLOR_SCHEMES[state.scheme] || COLOR_SCHEMES.grape;
+  const base = scheme.accent;
+  const colors = [
+    base,
+    ["#7D5260", "#FFD8E4"],
+    ["#386A20", "#B6F397"],
+    ["#00639B", "#9BCBFF"],
+    ["#984061", "#FFB0C8"]
+  ];
+  const COUNT = 10;
+  for (let i = 0; i < COUNT; i++) {
+    const tri = document.createElement("div");
+    tri.className = "tri";
+    const [c1, c2] = colors[i % colors.length];
+    const id = "g" + i + "_" + Date.now();
+    tri.innerHTML = `
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${c1}"/>
+            <stop offset="100%" stop-color="${c2}"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,12 88,84 12,84"
+                 fill="url(#${id})"
+                 stroke="url(#${id})"
+                 stroke-width="6"
+                 stroke-linejoin="round"/>
+      </svg>
+    `;
+    const size = 120 + Math.random() * 220;
+    tri.style.width = size + "px";
+    tri.style.height = size + "px";
+    tri.style.left = (Math.random() * 90) + "%";
+    tri.style.top = (Math.random() * 90) + "%";
+    const dx = (Math.random() * 200 - 100);
+    const dy = (Math.random() * 200 - 100);
+    const r = Math.random() * 360;
+    const dr = (Math.random() * 120 - 60);
+    tri.style.setProperty("--dx", dx + "px");
+    tri.style.setProperty("--dy", dy + "px");
+    tri.style.setProperty("--r", r + "deg");
+    tri.style.setProperty("--dr", dr + "deg");
+    const dur = 18 + Math.random() * 18;
+    tri.style.animationDuration = dur + "s";
+    tri.style.animationDelay = (-Math.random() * dur) + "s";
+    bg.appendChild(tri);
+  }
+}
+function applyBg() {
+  document.documentElement.setAttribute("data-bg", state.bg ? "on" : "off");
+}
+
+/* ============================================================
+   ВЕРХНИЙ БАР
+   ============================================================ */
+let currentView = "portfolio";
+function updateTopBar() {
+  const bar = $("#topPortfolioBar");
+  if (currentView !== "portfolio") { bar.classList.remove("visible"); return; }
+  if (window.scrollY > 120) bar.classList.add("visible");
+  else bar.classList.remove("visible");
+}
+window.addEventListener("scroll", updateTopBar, { passive: true });
+$("#toTopBtn").addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* ============================================================
+   ВКЛАДКИ
+   ============================================================ */
+function switchView(name) {
+  currentView = name;
+  $$(".view").forEach(v => v.classList.remove("active"));
+  document.getElementById("view-" + name).classList.add("active");
+  $$(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.view === name));
+  updateTopBar();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ============================================================
+   РЕЖИМ ПРЕДПРОСМОТРА
+   ============================================================ */
+let animOnly = false;
+function enterAnimOnly() {
+  animOnly = true;
+  document.documentElement.setAttribute("data-anim-only", "on");
+}
+function exitAnimOnly() {
+  animOnly = false;
+  document.documentElement.removeAttribute("data-anim-only");
+}
+
+/* ============================================================
+   МОДАЛКА ТЕМЫ
+   ============================================================ */
+function renderThemeList() {
+  $$("#themeList .dlg-list-item").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.themeOption === state.theme);
+  });
+  const map = { light: "Светлая", dark: "Тёмная", auto: "Авто" };
+  $("#themeLabel").textContent = map[state.theme] || "Авто";
+}
+$$("#themeList .dlg-list-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.theme = btn.dataset.themeOption;
+    applyScheme();
+    renderThemeList();
+    renderSchemeList();
+    saveSettings();
+    closeDialog($("#dlgTheme"));
+  });
+});
+$("#openThemeBtn").addEventListener("click", () => {
+  renderThemeList();
+  openDialog($("#dlgTheme"));
+});
+
+/* ============================================================
+   МОДАЛКА СХЕМЫ
+   ============================================================ */
+function renderSchemeList() {
+  const list = $("#schemeList");
+  list.innerHTML = "";
+  Object.entries(COLOR_SCHEMES).forEach(([key, scheme]) => {
+    const btn = document.createElement("button");
+    btn.className = "dlg-list-item" + (key === state.scheme ? " active" : "");
+    btn.dataset.schemeKey = key;
+    btn.appendChild(makePreview(key));
+    const text = document.createElement("div");
+    text.className = "item-text";
+    text.textContent = scheme.label;
+    btn.appendChild(text);
+    btn.addEventListener("click", () => {
+      state.scheme = key;
+      applyScheme();
+      initBackground();
+      renderSchemeList();
+      updateSchemePreview();
+      saveSettings();
+      closeDialog($("#dlgScheme"));
+    });
+    list.appendChild(btn);
+  });
+}
+function updateSchemePreview() {
+  const holder = $("#currentSchemePreview");
+  if (holder) {
+    const fresh = makePreview(state.scheme);
+    fresh.id = "currentSchemePreview";
+    holder.replaceWith(fresh);
+  }
+  $("#schemeLabel").textContent = COLOR_SCHEMES[state.scheme].label;
+}
+$("#openSchemeBtn").addEventListener("click", () => {
+  renderSchemeList();
+  openDialog($("#dlgScheme"));
+});
+
+/* ============================================================
+   МОДАЛКА "ПОДЕЛИТЬСЯ"
+   ============================================================ */
+function buildShareLinks() {
+  const url = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(`${ME.name} — портфолио`);
+  const map = {
+    telegram: `https://t.me/share/url?url=${url}&text=${title}`,
+    whatsapp: `https://api.whatsapp.com/send?text=${title}%20${url}`,
+    vk:       `https://vk.com/share.php?url=${url}&title=${title}`
+  };
+  $$("#dlgShare [data-share]").forEach(a => {
+    a.href = map[a.dataset.share] || "#";
+  });
+}
+function openShareDialog() {
+  const url = window.location.href;
+  $("#shareLinkInput").value = url;
+  buildShareLinks();
+  openDialog($("#dlgShare"));
+}
+$("#shareBtnHero").addEventListener("click", openShareDialog);
+
+// Копировать
+$("#copyShareBtn").addEventListener("click", async () => {
+  const input = $("#shareLinkInput");
+  const text = input.value;
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      input.select();
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+    }
+    showSnackbar("Ссылка скопирована");
+  } catch (e) {
+    input.select();
+    document.execCommand("copy");
+    showSnackbar("Ссылка скопирована");
+  }
+});
+
+// Системное "поделиться" (Web Share API)
+$("#shareNative").addEventListener("click", async (e) => {
+  if (navigator.share) {
+    e.preventDefault();
+    try {
+      await navigator.share({
+        title: `${ME.name} — портфолио`,
+        text: "Посмотри моё портфолио",
+        url: window.location.href
+      });
+    } catch (err) { /* отменено */ }
+  } else {
+    e.preventDefault();
+    showSnackbar("Системное меню недоступно");
+  }
+});
+
+/* ============================================================
+   СБРОС НАСТРОЕК
+   ============================================================ */
+$("#resetSettingsBtn").addEventListener("click", () => {
+  localStorage.removeItem(STORAGE_KEY);
+  state.sort = DEFAULTS.sort;
+  state.view = DEFAULTS.view;
+  state.theme = DEFAULTS.theme;
+  state.scheme = DEFAULTS.scheme;
+  state.bg = DEFAULTS.bg;
+  state.activeTags = new Set(DEFAULTS.activeTags);
+
+  applyScheme();
+  initBackground();
+  applyBg();
+  renderThemeList();
+  renderSchemeList();
+  updateSchemePreview();
+  renderTagsRow();
+
+  $("#sortLabelP").textContent = sortLabel(state.sort);
+  $("#sortLabelS").textContent = sortLabel(state.sort);
+  $$("#sortMenuP button, #sortMenuS button").forEach(x =>
+    x.classList.toggle("active", x.dataset.sort === state.sort));
+  $$("#viewToggleP button, #viewToggleS button").forEach(b =>
+    b.classList.toggle("active", b.dataset.view === state.view));
+  $("#bgToggle").checked = state.bg;
+
+  renderResults("resultsP", "counter-p");
+  renderResults("resultsS", "counter-s");
+  showSnackbar("Настройки сброшены");
+});
+
+/* ============================================================
+   ИНИЦИАЛИЗАЦИЯ
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  renderHero();
+  applyScheme();
+  initBackground();
+  applyBg();
+  renderTagsRow();
+  renderThemeList();
+  updateSchemePreview();
+  renderResults("resultsP", "counter-p");
+  renderResults("resultsS", "counter-s");
+  updateTopBar();
+
+  // применить сохранённые sort/view к UI
+  $("#sortLabelP").textContent = sortLabel(state.sort);
+  $("#sortLabelS").textContent = sortLabel(state.sort);
+  $$("#sortMenuP button, #sortMenuS button").forEach(x =>
+    x.classList.toggle("active", x.dataset.sort === state.sort));
+  $$("#viewToggleP button, #viewToggleS button").forEach(b =>
+    b.classList.toggle("active", b.dataset.view === state.view));
+  $("#bgToggle").checked = state.bg;
+
+  // Navbar
+  $$(".nav-item").forEach(btn => {
+    btn.addEventListener("click", () => switchView(btn.dataset.view));
+  });
+
+  // Сортировка
+  const sortBtnP = $("#sortBtnP"), sortMenuP = $("#sortMenuP");
+  sortBtnP.addEventListener("click", (e) => { e.stopPropagation(); sortMenuP.classList.toggle("open"); });
+  $$("#sortMenuP button").forEach(b => {
+    b.addEventListener("click", () => {
+      state.sort = b.dataset.sort;
+      $("#sortLabelP").textContent = sortLabel(state.sort);
+      $("#sortLabelS").textContent = sortLabel(state.sort);
+      $$("#sortMenuP button, #sortMenuS button").forEach(x =>
+        x.classList.toggle("active", x.dataset.sort === state.sort));
+      sortMenuP.classList.remove("open");
+      renderResults("resultsP", "counter-p");
+      renderResults("resultsS", "counter-s");
+      saveSettings();
+    });
+  });
+
+  const sortBtnS = $("#sortBtnS"), sortMenuS = $("#sortMenuS");
+  sortBtnS.addEventListener("click", (e) => { e.stopPropagation(); sortMenuS.classList.toggle("open"); });
+  $$("#sortMenuS button").forEach(b => {
+    b.addEventListener("click", () => {
+      state.sort = b.dataset.sort;
+      $("#sortLabelP").textContent = sortLabel(state.sort);
+      $("#sortLabelS").textContent = sortLabel(state.sort);
+      $$("#sortMenuP button, #sortMenuS button").forEach(x =>
+        x.classList.toggle("active", x.dataset.sort === state.sort));
+      sortMenuS.classList.remove("open");
+      renderResults("resultsP", "counter-p");
+      renderResults("resultsS", "counter-s");
+      saveSettings();
+    });
+  });
+
+  document.addEventListener("click", () => {
+    sortMenuP.classList.remove("open");
+    sortMenuS.classList.remove("open");
+  });
+
+  // Вид
+  $$("#viewToggleP button, #viewToggleS button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.view = btn.dataset.view;
+      $$("#viewToggleP button, #viewToggleS button").forEach(b =>
+        b.classList.toggle("active", b.dataset.view === state.view));
+      renderResults("resultsP", "counter-p");
+      renderResults("resultsS", "counter-s");
+      saveSettings();
+    });
+  });
+
+  // Поиск
+  const searchInput = $("#searchInput"), clearSearch = $("#clearSearch");
+  searchInput.addEventListener("input", () => {
+    state.search = searchInput.value;
+    clearSearch.style.display = state.search ? "inline" : "none";
+    renderResults("resultsS", "counter-s");
+  });
+  clearSearch.addEventListener("click", () => {
+    searchInput.value = ""; state.search = "";
+    clearSearch.style.display = "none";
+    renderResults("resultsS", "counter-s");
+    searchInput.focus();
+  });
+
+  // Фон
+  const bgToggle = $("#bgToggle");
+  bgToggle.addEventListener("change", () => {
+    state.bg = bgToggle.checked;
+    applyBg();
+    saveSettings();
+  });
+
+  // Предпросмотр анимации
+  const previewBtn = $("#previewAnimBtn");
+  previewBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!state.bg) { state.bg = true; bgToggle.checked = true; applyBg(); }
+    enterAnimOnly();
+    setTimeout(() => { animOnly = true; }, 0);
+  });
+  const hint = $("#animExitHint");
+  hint.addEventListener("click", (e) => { e.stopPropagation(); exitAnimOnly(); });
+  document.addEventListener("click", (e) => {
+    if (!animOnly) return;
+    if (e.target.closest("#previewAnimBtn")) return;
+    exitAnimOnly();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && animOnly) exitAnimOnly();
+  });
+});
+</script>
+</body>
+</html>
